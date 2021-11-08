@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form role="form" action="/new_save" method="post">
+        {% csrf_token %}
+
+
+        <section class="content">
+            <p style="font-size:25px"> Payment Invoice</p>
+
+            <div class="card-body">
+                <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-12 col-md-6"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                                role="grid" aria-describedby="example2_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_desc" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="Rendering engine: activate to sort column ascending"
+                                            aria-sort="descending">Order</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="Browser: activate to sort column ascending">Paper
+                                            List</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="Platform(s): activate to sort column ascending">Date
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-label="Engine version: activate to sort column ascending">
+                                            Price</th>
+                                </thead>
+                                <tbody>
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1" tabindex="0">1</td>
+                                        <td>CIIS 2021</td>
+                                        <td>2011/04/25</td>
+                                        <td>2000 : 1 person </td>
+                                    </tr>
+                                </tbody>
+                        </div>
+
+                        <tfoot></tfoot>
+                        </table> <!-- tapbelow -->
+                    </div>
+
+
+                </div>
+
+                <div id="example1_filter" class="dataTables_filter">
+                    <label>num <input type="int" class="form-control form-control-sm" name="num" placeholder=""
+                            aria-controls="example1" required></label>
+
+                </div>
+
+
+
+                <div id="example1_filter" class="dataTables_filter">
+                    <label>Add Banquet >> 1000 : person <input type="int" class="form-control form-control-sm"
+                            name="banquet" placeholder="" aria-controls="example1" required></label>
+
+                </div>
+
+
+                <!-- 1 -->
+                <div class="form-group row" style="margin-top:10px">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span style="margin-top:10px" class="input-group-text">
+                                <!-- Default inline 1-->
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="defaultInline1" name="inline1"
+                                        type="status1" value="No Add" checked required>
+                                    <label class="custom-control-label" for="defaultInline1">No Add</label>
+                                </div>
+
+                                <!-- Default inline 2-->
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="defaultInline2" name="inline1"
+                                        type="status1" value="1 person : 2000 Bath" required>
+                                    <label class="custom-control-label" for="defaultInline2">1 person : 2000
+                                        Bath</label>
+                                </div>
+                            </span>
+
+
+                            <div class="form-group col-md-4">
+                                <label for="inputFirstName"> First Name</label>
+                                <input type="text" class="form-control" id="inputFirstName1" name="inputFirstName1"
+                                    placeholder="FirstName">
+                            </div>
+                            <div class=" form-group col-md-4">
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" class="form-control" id="inputLastName1" name="inputLastName1"
+                                    placeholder="LastName">
+                            </div>
+                            <div class="form-group col-md-4"></div>
+                            <label for="inputFirstName">E-mail</label>
+                            <input type="text" class="form-control" id="inputemail1" name="inputemail1"
+                                placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position:absolute;right:30px;">
+                <input class="btn btn-primary" type="submit" value="ADD">
+            </div>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+{% extends 'financial_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<section class="container">
+
+  
+  <div class="row" align="center">
+    <div class="col-md-5">
+      <!-- Info Boxes Style 2 -->
+      <div class="info-box mb-1 bg-success">
+        <span class="info-box-icon">TMB</span>
+
+        <div class="info-box-content">
+          <h1 class="info-box-number">{{tmb}} ฿</h1>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+      <div class="info-box mb-1 bg-success">
+        <span class="info-box-icon">&nbsp;&nbsp;&nbsp;&nbsp;Paypal</span>
+
+        <div class="info-box-content">
+          <h1 class="info-box-number">{{paypal}} $</h1>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+      
+
+
+      <div class="info-box mb-1 bg-danger">
+        <span class="info-box-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author</span>
+
+        <div class="info-box-content">
+          <h1 class="info-box-number">{{total}} ฿</h1>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+
+
+
+
+
+
+      <!-- /.info-box -->
+      <div class="info-box mb-1 bg-info">
+        <span class="info-box-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participant</span>
+
+        <div class="info-box-content">
+          <h1 class="info-box-number"> {{pp}} ฿</h1>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+
+
+      <div class="info-box mb-1 bg-warning">
+        <span class="info-box-icon">&nbsp;&nbsp;Total</span>
+
+        <div class="info-box-content">
+          <h1 class="info-box-number">  {{s}} ฿</h1>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+
+     
+      <!-- /.card -->
+
+      <!-- PRODUCT LIST -->
+      
+      <!-- /.card -->
+    </div>
+
+
+
+
+  </div>
+   
+</section>
+<!-- /.content -->
+{% endblock main_content %}

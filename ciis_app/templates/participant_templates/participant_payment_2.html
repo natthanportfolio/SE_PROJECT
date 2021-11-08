@@ -1,0 +1,62 @@
+{% extends 'participant_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+    <p style="font-size:25px"> Payment Invoice</p>
+    <table class="table table-hover text-nowrap" id="tables">
+
+
+
+        <table class="table table-hover text-nowrap" id="tables">
+
+            <thead>
+                <tr>
+                    <th>PaperList</th>
+                    <th>Billid</th>
+                    <th>Banquet</th>
+                    <th>Person</th>
+                    <th>Price</th>
+                    <th>Date</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in dataall %}
+                <tr>
+                    <td>{{ member.paperlist}}</td>
+                    <td>{{ member.id}}</td>
+                    <td>{{ member.banquet }}</td>
+                    <td>{{ member.person}}</td>
+                    <td>{{ member.price }}</td>
+                    <td>{{ member.datebill }}</td>
+
+                    <td>
+                        <a href="{{member.id}}/{{ member.banquet}}" target="_blank" >{{ member.id}} (pdf)</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+</div>
+
+
+<div class="form-group">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger" style="margin-top:1px">{{ message }}</div>
+    {% endif %}
+    {% if message.tags == 'success' %}
+    <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+</div>
+<!-- /.content -->
+{% endblock main_content %}

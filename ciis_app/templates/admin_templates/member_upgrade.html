@@ -1,0 +1,46 @@
+{% extends 'admin_templates/base_template.html' %}
+{% block page_title %}
+Member Upgrade Status Table
+{% endblock page_title %}
+
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+    <div class="card">
+    <!-- /.card-header -->
+    <div class="card-body">
+     <table class="table table-hover text-nowrap"  id="FinancialTables">
+                    <thead>
+                      <tr>
+                        <th>Paper Title</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+
+                        <th>Phone No.</th>
+                        
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for member in member %}
+                      <tr>
+                        <td>{{ member.paper_title }}</td>
+                        <td>{{ member.fname }}</td>
+                        <td>{{ member.lname }}</td>
+                        <td>{{ member.email_add }}</td>
+                        
+                        <td>{{ member.phoneno }}</td>
+                        
+                  
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+

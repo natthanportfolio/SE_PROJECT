@@ -1,0 +1,55 @@
+{% extends 'authorf_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+  <table class="table table-hover text-nowrap" id="tables">
+    </form>
+    <thead>
+      <tr>
+        <th>Bill ID</th>
+        <th>Paper ID</th>
+        <th>Paper Title</th>
+        <th>Paper Type</th>
+        <th>Author Type</th>
+        <th>Price</th>
+        <th>Upload</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in data %}
+      <tr>
+        <td>{{ paper.bill_id }}</td>
+        <td>{{ paper.paper_id }}</td>
+        <td>{{ paper.paper_title }}</td>
+        <td>{{ paper.paper_type }}</td>
+        <td>{{ paper.author_type }}</td>
+        <td>{{ paper.price }}</td>
+        <td>
+          <form method="post" enctype="multipart/form-data" class="form-group">
+            {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="myfile" id="file_input">
+                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                  </div>
+                  <div class="input-group-append">
+                    <button type="submit">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </td>
+
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- /.content -->
+{% endblock main_content %}

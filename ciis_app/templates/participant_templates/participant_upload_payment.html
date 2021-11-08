@@ -1,0 +1,89 @@
+{% extends 'participant_templates/base_template.html' %}
+{% block page_title %}
+
+{% endblock page_title %}
+{% block main_content %}
+
+
+<!-- Main content -->
+<div class="card-body">
+
+  <p style="font-size:25px"> Upload-Payment</p>
+
+
+
+  <table class="table table-hover text-nowrap" id="tables">
+
+    <thead>
+      <tr>
+        <th>PaperList</th>
+        <th>Billid</th>
+        <th>Banquet</th>
+        <th>Person</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>Upload Bill</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for member in databill1 %}
+      <tr>
+        <td>{{ member.paperlist}}</td>
+        <td>{{ member.id}}</td>
+        <td>{{ member.banquet }}</td>
+        <td>{{ member.person}}</td>
+        <td>{{ member.price }}</td>
+        <td>{{ member.datebill }}</td>
+        <td>
+          <form method="post" action="update_profile_images/{{member.id }}" enctype="multipart/form-data"
+            class="form-group">
+            {% csrf_token %}
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="profile_img" id="file_input" required>
+                    <label class="custom-file-label" for="exampleInputFile">Choose
+                      file</label>
+                  </div>
+                  <div class="input-group-append">
+                    <button type="submit">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      <!-- /.card -->
+    </tbody>
+
+  </table>
+  <tfoot>
+    <!-- /.card-body -->
+    <div class="form-group">
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags == 'error' %}
+      <div class="alert alert-danger" style="margin-top:10px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+      </div>
+      {% endif %}
+      {% if message.tags == 'success' %}
+      <div class="alert alert-success" style="margin-top:10px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </tfoot>
+
+</div>
+
+
+
+<!-- /.content -->
+
+{% endblock main_content %}

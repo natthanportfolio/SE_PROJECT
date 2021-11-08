@@ -1,0 +1,75 @@
+{% extends 'participant_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Edit Information</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form role="form" action="/participant_edit_save" method="post">
+            {% csrf_token %}
+            <div class="card-body">
+
+              <div class="form-group">
+                <label>Email</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" value="{{ user.username}}"
+                  disabled>
+              </div>
+
+              <div class="form-group">
+                <label>First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control" pattern="[a-zA-Z]*" placeholder="First Name" name="first_name"
+                  value="{{ data.first_name }}" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control" pattern="[a-zA-Z]*" placeholder="Last Name" name="last_name"
+                  value="{{ data.last_name}}" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control" maxlength="10" placeholder="Phone Number" pattern="[0]{1}[0-9]{1}[0-9]{8}" name="phone_no"
+                  value="{{ data2.phoneno }}" required>
+              </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="form-group">
+              {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" style="margin-top:10px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+              </div>
+              {% endif %}
+              {% if message.tags == 'success' %}
+              <div class="alert alert-success" style="margin-top:10px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+              </div>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary btn-block">Edit</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.content -->
+{% endblock main_content %}

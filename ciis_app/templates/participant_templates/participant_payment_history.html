@@ -1,0 +1,67 @@
+{% extends 'participant_templates/base_template.html' %}
+{% block page_title %}
+
+{% endblock page_title %}
+{% block main_content %}
+<section>
+  <div class="card">
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table class="table table-hover text-nowrap"  id="tables">
+        <thead>
+          <tr>
+            <th>PaperList</th>
+            <th>Billid</th>
+            <th>Banquet</th>
+            <th>Person</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Print PDF</th>
+    
+          </tr>
+        </thead>
+        <tbody>
+          {% for member in databill %}
+          <tr>
+            <td>{{ member.paperlist}}</td>
+            <td>{{ member.id}}</td>
+            <td>{{ member.banquet }}</td>
+            <td>{{ member.person}}</td>
+            <td>{{ member.price }}</td>
+            <td>{{ member.datebill }}</td>
+            <td>{% if member.status == "Success" %}
+              <span class="btn btn-success">Success</span>
+              {% elif member.status == "Overdue" %}
+              <span class="btn btn-warning">Overdue</span>
+              {% elif member.status == "Wait verify" %}
+              <span class="btn btn-secondary">Wait verify</span>
+              {% elif member.status == "Error" %}
+              <span class="btn btn-danger">Error</span>
+              {% endif %}
+            </td>
+            <td>{% if member.status != "Success" %}
+              <a href="{{member.id}}/{{ member.banquet}}" target="_blank">{{ member.id}}(print pdf)</a>
+              {% else %}{% endif %}
+            </td>
+    
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+    
+  </div>
+
+  <p style="font-size:30px">***Permission Card will sent to your E-mail when Status is Success</p>
+
+
+</section>
+
+
+
+
+<!-- /.content -->
+
+{% endblock main_content %}

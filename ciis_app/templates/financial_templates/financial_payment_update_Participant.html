@@ -1,0 +1,44 @@
+{% extends 'financial_templates/base_template.html' %}
+{% block page_title %}
+
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="card-body">
+        <table class="table table-hover text-nowrap" id="tables">
+          <thead>
+            <tr>
+              <th>Bill ID</th>
+              <th>Paperlist</th>
+              <th>Price</th>
+              <th>Date</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for participantc in payhistorypp %}
+            <tr>
+              <td>{{ participantc.id }}</td>
+              <td>{{ participantc.paperlist }}</td>
+              <td>{{ participantc.price }}</td>
+              <td>{{ participantc.datebill }}</td>
+              <td>{{ participantc.userfirstname }}</td>
+              <td>{{ participantc.userlastname }}</td>
+              <td>{{ participantc.status }}</td>
+              <td>
+                <a href="/cancel_statuspp/{{ participantc.id }}" class="btn btn-danger">Cancel</a>
+                <a href="/success_statuspp/{{ participantc.id }}" class="btn btn-success">Success</a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+

@@ -1,0 +1,61 @@
+{% extends 'financial_templates/base_template.html' %}
+{% block page_title %}
+
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content --> 
+    <section class="content">
+      <div class="card-body">
+        <table class="table table-hover text-nowrap" id="tables">
+          <thead>
+            <tr>
+              <th>Bill ID</th>
+              <th>Paper Title</th>
+              <th>Price</th>
+              <th>Date</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for paymentpaperc in paymentpaper %}
+            <tr>
+              <td>{{ paymentpaperc.bill_id }}</td>
+              <td>{{ paymentpaperc.paper_title }}</td>
+              <td>{{ paymentpaperc.price }}</td>
+              <td>{{ paymentpaperc.datetime }}</td>
+              <td>{{ paymentpaperc.fname }}</td>
+              <td>{{ paymentpaperc.lname }}</td>
+              <td>{{ paymentpaperc.status }}</td>
+              <td>
+                <a href="/change_statusat/{{ paymentpaperc.bill_id }}" class="btn btn-success">Change</a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="row">
+        {% if messages %}
+       <div class="col-12">
+          {% for message in messages %}
+          {% if message.tags == 'error' %}
+          <div class="alert alert-danger" style="margin-top:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+          {% endif %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" style="margin-top:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+          </section>
+          <!-- /.content -->
+      {% endblock main_content %}
+      

@@ -1,0 +1,47 @@
+{% extends 'authorf_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+  <table class="table table-hover text-nowrap" id="tables">
+    <thead>
+      <tr>
+        <th>Bill ID</th>
+        <th>Paper ID</th>
+        <th>Paper Title</th>
+        <th>Paper Type</th>
+        <th>Author Type</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Updata</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in data %}
+      <tr>
+        <td>{{ paper.bill_id }}</td>
+        <td>{{ paper.paper_id }}</td>
+        <td>{{ paper.paper_title }}</td>
+        <td>{{ paper.paper_type }}</td>
+        <td>{{ paper.author_type }}</td>
+        <td>{{ paper.price }}</td>
+        <td>{% if paper.status == "Success" %}
+          <span class="btn btn-success">Success</span>
+          {% elif paper.status == "Overdue" %}
+          <span class="btn btn-warning">Overdue</span>
+          {% endif %}
+
+        </td>
+        <td>{{ paper.datetime|date:'Y-m-d H:i:s' }}</td>
+        <td>{% if paper.status != "Success" %}
+          <a class="btn btn-sm btn-warning" href="{% url 'checkout' paper.bill_id  %}" target="_blank">Paypal</a>
+          {% else %}{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- /.content -->
+{% endblock main_content %}

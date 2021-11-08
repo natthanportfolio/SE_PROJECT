@@ -1,0 +1,300 @@
+{% extends 'participant_templates/base_template.html' %}
+{% block page_title %}
+
+{% endblock page_title %}
+{% block main_content %}
+
+<!-- Main content -->
+<style>
+  #summation {
+    font-size: 18px;
+    font-weight: bold;
+    color: #174C68;
+  }
+
+  .txt {
+    background-color: #FEFFB0;
+    font-weight: bold;
+    text-align: right;
+  }
+</style>
+
+<body>
+  <div class="form-group">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger" style="margin-top:1px">{{ message }}</div>
+    {% endif %}
+    {% if message.tags == 'success' %}
+    <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <form role="form" action="/participant_payment_save" method="post">
+    {% csrf_token %}
+
+
+
+    <section class="content">
+      <p style="font-size:25px"> Payment Invoice</p>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+
+
+
+      <div class="card-body">
+        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6"></div>
+            <div class="col-sm-12 col-md-6"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid"
+                aria-describedby="example2_info">
+                <thead>
+                  <tr role="row">
+
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                      aria-label="Browser: activate to sort column ascending">Paper
+                      List</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                      aria-label="Platform(s): activate to sort column ascending">Date
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                      aria-label="Engine version: activate to sort column ascending">
+                      Price</th>
+                </thead>
+                <tbody>
+                  <tr role="row" class="odd">
+
+                    <td>CIIS 2021</td>
+                    <td>2011/04/25</td>
+                    <td>2000 : 1 person </td>
+                  </tr>
+                </tbody>
+            </div>
+
+            <tfoot></tfoot>
+            </table> <!-- tapbelow -->
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div id="example1_filter" class="dataTables_filter">
+          <label>PaperList <input type="text" class="form-control form-control-sm" name="paperlist"
+              placeholder="CIIS 2020" value="CIIS 2020" aria-controls="example1" disabled=""></label>
+
+
+
+
+        </div>
+
+
+        <!-- 1 -->
+        <div class="form-group row" style="margin-top:10px">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="margin-top:10px" class="input-group-text">
+                <!-- Default inline 1-->
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline1" name="inline" type="status1"
+                    value="1" required>
+                  <label class="custom-control-label" for="defaultInline1">1 Person : 2000 Bath</label>
+                </div>
+
+
+              </span>
+
+
+              <div class="form-group col-md-4">
+                <label for="inputFirstName"> First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"  pattern="[a-zA-Z]*" class="form-control" id="inputFirstName1" name="inputFirstName1"
+                  placeholder="FirstName">
+              </div>
+              <div class=" form-group col-md-4">
+                <label for="inputLastName">Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"   pattern="[a-zA-Z]*" class="form-control" id="inputLastName1" name="inputLastName1"
+                  placeholder="LastName">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFirstName">E-mail</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" id="inputemail1" name="inputemail1" placeholder="Email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="form-group row" style="margin-top:10px">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="margin-top:10px" class="input-group-text">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline2" name="inline" type="status1"
+                    value="2" required>
+                  <label class="custom-control-label" for="defaultInline2">2 Person : 4000 Bath</label>
+                </div>
+              </span>
+
+
+              <div class="form-group col-md-4">
+                <label for="inputFirstName"> First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"   pattern="[a-zA-Z]*" class="form-control" id="inputFirstName1" name="inputFirstName2"
+                  placeholder="FirstName">
+              </div>
+              <div class=" form-group col-md-4">
+                <label for="inputLastName">Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"   pattern="[a-zA-Z]*" class="form-control" id="inputLastName1" name="inputLastName2"
+                  placeholder="LastName">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFirstName">E-mail</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" id="inputemail1" name="inputemail2" placeholder="Email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="form-group row" style="margin-top:10px">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="margin-top:10px" class="input-group-text">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline3" name="inline" type="status1"
+                    value="3" required>
+                  <label class="custom-control-label" for="defaultInline3">3 Person : 6000 Bath</label>
+                </div>
+              </span>
+
+
+              <div class="form-group col-md-4">
+                <label for="inputFirstName"> First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control"  pattern="[a-zA-Z]*" id="inputFirstName1" name="inputFirstName3"
+                  placeholder="FirstName">
+              </div>
+              <div class=" form-group col-md-4">
+                <label for="inputLastName">Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control"   pattern="[a-zA-Z]*" id="inputLastName1" name="inputLastName3"
+                  placeholder="LastName">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFirstName">E-mail</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" id="inputemail1" name="inputemail3" placeholder="Email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 4 -->
+        <div class="form-group row" style="margin-top:10px">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="margin-top:10px" class="input-group-text">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline4" name="inline" type="status1"
+                    value="4" required>
+                  <label class="custom-control-label" for="defaultInline4">4 Person : 8000 Bath</label>
+                </div>
+
+              </span>
+
+
+              <div class="form-group col-md-4">
+                <label for="inputFirstName"> First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control"  pattern="[a-zA-Z]*" id="inputFirstName1" name="inputFirstName4"
+                  placeholder="FirstName">
+              </div>
+              <div class=" form-group col-md-4">
+                <label for="inputLastName">Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text" class="form-control"  pattern="[a-zA-Z]*" id="inputLastName1" name="inputLastName4"
+                  placeholder="LastName">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFirstName">E-mail</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" id="inputemail1" name="inputemail4" placeholder="Email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="form-group row" style="margin-top:10px">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="margin-top:10px" class="input-group-text">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline5" name="inline" class="text"
+                    value="5" required>
+                  <label class="custom-control-label" for="defaultInline5">5 Person:10000 Bath</label>
+                </div>
+              </span>
+
+
+              <div class="form-group col-md-4">
+                <label for="inputFirstName"> First Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"  pattern="[a-zA-Z]*" class="form-control" id="inputFirstName1" name="inputFirstName5"
+                  placeholder="FirstName">
+              </div>
+              <div class=" form-group col-md-4">
+                <label for="inputLastName">Last Name</label> <label  style="color:#FF0000">*</label>
+                <input type="text"   pattern="[a-zA-Z]*" class="form-control" id="inputLastName1" name="inputLastName5"
+                  placeholder="LastName">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFirstName">E-mail</label> <label  style="color:#FF0000">*</label>
+                <input type="email" class="form-control" id="inputemail1" name="inputemail5" placeholder="Email">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+<label> *Please press number* </label><br>
+
+        <label>  Add Banquet >> 1000 : person     
+          <td><input class="txt" type="number" name="banquet" min="0" oninput="validity.valid||(value='');" value="0"
+              required>
+          </td>
+
+        </label>
+        <label>
+          <tr id="summation">
+            <td>&nbsp;</td>
+            <td>Sum :</td>
+            <td><span id="sum">0</span></td>
+          </tr>
+        </label>
+        </label>
+
+
+        <!-- <div style="position:absolute;right:400px;"> -->
+
+          <input href="/participant_payment_history" class="btn btn-primary" type="submit" value="Payment">
+
+        </div>
+  </form>
+
+
+</body>
+
+
+<!-- /.content -->
+
+{% endblock main_content %}

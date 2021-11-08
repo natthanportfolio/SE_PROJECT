@@ -1,0 +1,36 @@
+{% extends 'author_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+    <table class="table table-hover text-nowrap" id="tables">
+        <thead>
+            <tr>
+                <th>Bill ID</th>
+                <th>Paper ID</th>
+                <th>Paper Title</th>
+                <th>Paper Type</th>
+                <th>Author type</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ d.bill_id }} </td>
+                <td>{{ d.id }}</td>
+                <td>{{ d.paper_title }}</td>
+                <td>{{ d.paper_type }}</td>
+                <td>{{ d.author_type }}</td>
+                <td>{{ d.price }}</td>
+                <td>{{ d.status }}</td>
+                <td><a href="{{d.bill_id }}">{{ d.bill_id}} (pdf)</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- /.content -->
+{% endblock main_content %}

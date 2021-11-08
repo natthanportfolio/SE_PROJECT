@@ -1,0 +1,62 @@
+{% extends 'authorf_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+  <form role="form" action="/authorf_addpaperid_save" method="post">
+    {% csrf_token %}
+    <label>Paper ID
+      <input type="search" class="form-control form-control-sm" name="PaperID" placeholder="PaperID "
+        aria-controls="example1" required>
+    </label>
+    <label>Paper Title
+      <input type="search" class="form-control form-control-sm" name="PaperTitle" placeholder="PaperTitle"
+        aria-controls="example1" required>
+    </label>
+    <input class="btn btn-primary" type="submit" value="ADD">
+    <div class="form-group">
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags == 'error' %}
+      {% if message.tags == 'error' %}
+      <div class="alert alert-danger" style="margin-top:10px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+      {% endif %}
+      {% endif %}
+      {% if message.tags == 'success' %}
+      <div class="alert alert-success" style="margin-top:10px">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </form>
+
+  <table class="table table-hover text-nowrap" id="tables">
+
+    <thead>
+      <tr>
+        <th>Paper ID</th>
+        <th>Paper Title</th>
+        <th>Author Name</th>
+        <th>Name</th>
+        <th>Paper Type</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in data %}
+      <tr>
+        <td>{{ paper.paper_id }}</td>
+        <td>{{ paper.paper_title }}</td>
+        <td>{{ paper.author_name }}</td>
+        <td>{{ paper.email_add }}</td>
+        <td>{{ paper.paper_type }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- /.content -->
+{% endblock main_content %}

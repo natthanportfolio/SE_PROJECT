@@ -1,0 +1,57 @@
+{% extends 'author_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+  <table class="table table-hover text-nowrap" id="tables">
+    </form>
+    <thead>
+      <tr>
+        <th>Bill ID</th>
+        <th>Paper ID</th>
+        <th>Paper Title</th>
+        <th>Paper Type</th>
+        <th>Author Type</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Updata</th>
+        <th>Print PDF</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in data %}
+      <tr>
+        <td>{{ paper.bill_id }}</td>
+        <td>{{ paper.paper_id }}</td>
+        <td>{{ paper.paper_title }}</td>
+        <td>{{ paper.paper_type }}</td>
+        <td>{{ paper.author_type }}</td>
+        <td>{{ paper.price }}</td>
+        <td>{% if paper.status == "Success" %}
+          <span class="btn btn-success">Success</span>
+          {% elif paper.status == "Overdue" %}
+          <span class="btn btn-warning">Overdue</span>
+          {% elif paper.status == "Wait verify" %}
+          <span class="btn btn-secondary">Wait verify</span>
+          {% elif paper.status == "Upgrade" %}
+          <span class="btn btn-dark">Upgrade</span>
+          {% elif paper.status == "Downgrade" %}
+          <span class="btn btn-dark">Downgrade</span>
+          {% elif paper.status == "Error" %}
+          <span class="btn btn-danger">Error</span>
+          {% endif %}
+        </td>
+        <td>{{ paper.datetime|date:'Y-m-d H:i:s' }}</td>
+        <td>{% if paper.status != "Success" and paper.status != "Downgrade" and paper.status != "Upgrade"%}
+          <a href="{{paper.bill_id }}" target="_blank">{{ paper.bill_id}}(print pdf)</a>
+          {% else %}{% endif %}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- /.content -->
+{% endblock main_content %}

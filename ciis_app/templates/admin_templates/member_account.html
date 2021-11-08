@@ -1,0 +1,164 @@
+{% extends 'admin_templates/base_template.html' %}
+{% block page_title %}
+Member Account
+{% endblock page_title %}
+{% block main_content %}
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="card card-primary card-outline card-outline-tabs">
+        <div class="card-header p-0 border-bottom-0">
+          <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Authors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Participants</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content" id="custom-tabs-three-tabContent">
+          
+                  <!-- Admin Tab -->
+
+            <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+              <div class="card">
+                <div class="card-header" align="right">
+                  <td><a href="/add_author" class="btn btn-primary">Add Author</a></td>
+
+
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-hover text-nowrap" id="AdminTables">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Last Login</th>
+                        <th>Date Joined</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for aut in author %}
+                      <tr>                   
+                        <td>{{ aut.id }}</td>
+                        <td>{{ aut.admin.first_name }}</td>
+                        <td>{{ aut.admin.last_name }}</td>
+                        <td>{{ aut.admin.email }}</td>
+                        <td>{{ aut.admin.last_login }}</td>
+                        <td>{{ aut.admin.date_joined }}</td>
+                        
+                      </tr>
+                    
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+
+
+          
+            
+            
+            
+            
+             <!-- Financial Tab -->
+            
+            <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-hover text-nowrap"  id="FinancialTables">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Last Login</th>
+                        <th>Date Joined</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for parti in participant %}
+                      <tr>                   
+                        <td>{{ parti.id }}</td>
+                        <td>{{ parti.admin.first_name }}</td>
+                        <td>{{ parti.admin.last_name }}</td>
+                        <td>{{ parti.admin.email }}</td>
+                        <td>{{ parti.admin.last_login }}</td>
+                        <td>{{ parti.admin.date_joined }}</td>
+                        
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              
+
+            </div>
+            
+            
+             <!-- Admin Tab -->
+            <div class="modal fade" id="modal-default" style=" padding-right: 16px;" aria-modal="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+
+
+
+
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+
+
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+      <div class="row">
+        {% if messages %}
+       <div class="col-12">
+          {% for message in messages %}
+          {% if message.tags == 'error' %}
+          <div class="alert alert-danger" style="margin-top:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+          {% endif %}
+          {% if message.tags == 'success' %}
+          <div class="alert alert-success" style="margin-top:10px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}</div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+     
+
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

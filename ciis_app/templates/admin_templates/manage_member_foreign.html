@@ -1,0 +1,47 @@
+{% extends 'admin_templates/base_template.html' %}
+{% block page_title %}
+Manage Foreign Member
+{% endblock page_title %}
+
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+    <div class="card">
+    <!-- /.card-header -->
+    <div class="card-body">
+     <table class="table table-hover text-nowrap"  id="FinancialTables">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Last Login</th>
+                        <th>Date Joined</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for financial in financials %}
+                      <tr>
+                        <td>{{ financial.id }}</td>
+                        <td>{{ financial.admin.first_name }}</td>
+                        <td>{{ financial.admin.last_name }}</td>
+                        <td>{{ financial.admin.email }}</td>
+                        <td>{{ financial.address }}</td>
+                        <td>{{ financial.admin.last_login }}</td>
+                        <td>{{ financial.admin.date_joined }}</td>
+                        <td><a href="/edit_financial/{{ financial.admin.id }}" class="btn btn-success">Edit</a></td>
+                  
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+

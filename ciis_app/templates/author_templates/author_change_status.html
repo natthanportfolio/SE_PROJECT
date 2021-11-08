@@ -1,0 +1,57 @@
+{% extends 'author_templates/base_template.html' %}
+{% block page_title %}
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+<div class="card-body">
+  <table class="table table-hover text-nowrap" id="tables">
+    <thead>
+      <tr>
+        <th>Bill ID</th>
+        <th>Paper ID</th>
+        <th>Paper Title</th>
+        <th>Paper Type</th>
+        <th>Author Type</th>
+        <th>Price</th>
+        <th>Change Type</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in data %}
+      <tr>
+
+        <td>{{paper.bill_id}}</td>
+        <td>{{paper.paper_id}}</td>
+        <td>{{paper.paper_title}}</td>
+        <td>{{paper.paper_type}}</td>
+        <td>{{paper.author_type}}</td>
+        <td>{{paper.price}}</td>
+
+        <form role="form" action="/author_change_status_save/{{ paper.bill_id }}" method="post">
+          {% csrf_token %}
+          <td><input class=" btn btn-primary" type="submit" value="Change"></a></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="form-group">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger" style="margin-top:10px">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+    </div>
+    {% endif %}
+    {% if message.tags == 'success' %}
+    <div class="alert alert-success" style="margin-top:10px">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>{{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+<!-- /.content -->
+{% endblock main_content %}
